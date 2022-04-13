@@ -1,7 +1,8 @@
-
-# A lightweight JavaScript Library for DOM manipulation
+# For importing
+<code><script src="https://peculiar-codes.github.io/peculiar.github.io/peculiar.js"></script></code>
+## A lightweight JavaScript Library for DOM manipulation
 <code>p("#id").hide()</code>
-## Has a loader
+### Has a loader
 <h3>For big loaders</h3>
 <code>Peculiar.load()</code> 
 <h3>For small loader</h3>
