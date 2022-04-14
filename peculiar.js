@@ -195,38 +195,34 @@ Peculiar.copy=function(text){
            
            Peculiar.sel=function(n){
        
-          var pecs=document.querySelector(n);
+          this.n=document.querySelector(n);
+         
           
-          this.pec=()=>{
-          
-              return pecs;
-          }
-          var pecu=this.pec();
           
              
         this.display=()=>{
-           var dsplay; if(pecu.getAttribute("display")==null||pecu.getAttribute("display")==""){
+           var dsplay; if(this.n.getAttribute("display")==null||this.n.getAttribute("display")==""){
                 dsplay="block";
             }
             else{
-                dsplay=pecu.getAttribute("display");
+                dsplay=this.n.getAttribute("display");
             }
            return dsplay 
             }
         this.addClass=(clas)=>{
-            pecu.classList.add(clas);
+            this.n.classList.add(clas);
         }
         this.removeClass=(clas)=>{
-            pecu.classList.remove(clas)
+            this.n.classList.remove(clas)
         }
         this.hide=()=>{
       
-            pecu.style.display="none";
+            this.n.style.display="none";
         }
         this.fadeIn=(d="block")=>{
             this.show(d);
             
-            pecu.animate([
+            this.n.animate([
     { opacity: '0' },
     { opacity: '1'}
   ], {
@@ -239,7 +235,7 @@ this.show(d);
 },987);
         }
         this.fadeOut=()=>{
-            pecu.animate([
+            this.n.animate([
     { opacity: '1' },
     { opacity: '0'}
   ], {
@@ -253,11 +249,11 @@ this.hide();
         }
         
         this.show=(d="block")=>{
-           pecu.style.display=d;
+           this.n.style.display=d;
            
         }
         this.toggle=()=>{
-            if(pecu.style.display==""||pecu.style.display=="none"){
+            if(this.n.style.display==""||this.n.style.display=="none"){
                 this.show();
             }
             else{
@@ -265,85 +261,85 @@ this.hide();
             }
         }
     this.append=function(html){
-    pecu.innerHTML+=html;
+    this.n.innerHTML+=html;
 }
 this.prepend=function(html){
-    pecu.innerHTML=html+pecu.innerHTML;
+    this.n.innerHTML=html+this.n.innerHTML;
 }
 this.html=(htm)=>{
     if(htm===undefined){
-        return pecu.innerHTML;
+        return this.n.innerHTML;
     }
     else{
-        pecu.innerHTML=htm;
+        this.n.innerHTML=htm;
         return this;
     }
 }
 this.attr=(at,va)=>{
     if(va===undefined){
-        return pecu.getAttribute(at)
+        return this.n.getAttribute(at)
     }
     else{
-        return pecu.setAttribute(at,va);
+        return this.n.setAttribute(at,va);
     }
 }
 this.val=function(newVal){
-    return(newVal===undefined?pecu.value=pecu.value:newVal)
+    return(newVal===undefined?this.n.value=this.n.value:newVal)
 }
 this.text=function(text){
-    return(text===undefined?pecu.textContent=pecu.textContent:text);
+    return(text===undefined?this.n.textContent=this.n.textContent:text);
 }
-//var display=pecu.style.getPropertyValue('display');
+//var display=this.n.style.getPropertyValue('display');
 this.hide=()=>{
-    pecu.style.display="none";
+    this.n.style.display="none";
 }
 this.show=(display)=>{
-   pecu.style.display=display;
+   this.n.style.display=display;
 }
 this.toggle=()=>{
-    let display=pecu.style.getPropertyValue("display");
+    let display=this.n.style.getPropertyValue("display");
 if(display===undefined||display===""){
-    return pecu.style.display="none";
+    return this.n.style.display="none";
     
     }
     else{
-        pecu.style.display=display;
+        this.n.style.display=display;
     }
 }
 this.next=()=>{
-    this.n=pecu.nextElementSibling;
+    this.n=this.n.nextElementSibling;
     return this;
 }
 this.prev=()=>{
-     this.n=pecu.previousElementSibling;
+     this.n=this.n.previousElementSibling;
      return this;
 }
 this.children=()=>{
-    this.n=pecu.children;
+    this.n=this.n.children;
     return this;
 }
 this.nchild=(i)=>{
     for(j=0;j<i;j++){
-         this.n=pecu.children[i];
+         this.n=this.n.children[i];
     }
     return this;
 }
 this.child=()=>{
-    this.n=pecu.firstChild;
+    this.n=this.n.firstChild;
     return this;
 }
 this.empty=()=>{
-   let p=pecu.children;
+   let p=this.n.children;
    for(i=0;i<p.length;i++){
        p[i].style.display="none";
    }
 }
 this.last=()=>{
-    this.n=pecu.lastChild;
+    this.n=this.n.lastChild;
     return this;
 }
 this.nextSib=()=>{
-    this.n=pecu.nextElementSibling;
+    this.n=this.n.nextElementSibling;
     return this;
 }
 this.type=(msg,n=200)=>{
@@ -362,7 +358,7 @@ span.animate([
 setInterval(()=>{
 if(i<msg.length){
 span.append(msg[i]);
-    pecu.append(span);
+    this.n.append(span);
     
     }
     i++},n);
@@ -371,7 +367,7 @@ span.append(msg[i]);
     },(n*msg.length))
 }
 /*    this.nextSibUntil=(n)=>{
-    let nextSibling=pecu.nextElementSibling;
+    let nextSibling=this.n.nextElementSibling;
     nextSib=[];
     while(nextSib.length<=n){
         nextSib.push(nextSibling);
@@ -379,7 +375,7 @@ span.append(msg[i]);
     }
 }
 this.prevSibUntil=(n)=>{
-     let previousSibling=pecu.previousElementSibling;
+     let previousSibling=this.n.previousElementSibling;
     prevSib=[];
     while(prevSib.length<=n){
         prevSib.push(previousSibling);
@@ -387,18 +383,19 @@ this.prevSibUntil=(n)=>{
     }
 }*/
 this.prevSib=()=>{
- this.n=pecu.previousElementSibling;
+ this.n=this.n.previousElementSibling;
  return this;
 }
 this.on=(evt,func)=>{
-    pecu.addEventListener(evt,func);
+    this.n.addEventListener(evt,func);
     return this
 }
 this.css=(value)=>{
-    pecu.style=value;
+    this.n.style=value;
 }
 
     }
+    
 var p=function(elem){
     let elm=new Peculiar.sel(elem);
     return elm
@@ -423,3 +420,24 @@ Peculiar.load=function(n=8000){
     h.removeOnTouch();
     h.remove(n)
 }
+//extensions
+Date.prototype.month=function(e){
+    var months_array=[];
+    if(e==f){
+        months_array=["January","February","March","April","May","June","July","August","September","October","November","December"];
+    }
+    else{
+        months_array=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    }
+    var date=new Date();
+    return months_array[date.getMonth];
+}
+Array.prototype.getMax=function(){
+    this.sort();
+   return this[this.length-1]
+}
+
+
+
+
+
